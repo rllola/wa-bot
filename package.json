@@ -4,6 +4,7 @@
   "description": "Workadventure Bot",
   "main": "main.js",
   "scripts": {
+    "dev": "nodemon src/main.js",
     "start": "node src/main.js",
     "test": "echo \"No test only talent\" && exit 1"
   },
@@ -16,5 +17,8 @@
     "grpc": "^1.24.11",
     "toml": "^3.0.0",
     "ws": "^7.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

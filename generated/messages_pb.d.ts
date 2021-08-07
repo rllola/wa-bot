@@ -598,14 +598,14 @@ export namespace VariableWithTagMessage {
 }
 
 export class PlayGlobalMessage extends jspb.Message { 
-    getId(): string;
-    setId(value: string): PlayGlobalMessage;
-
     getType(): string;
     setType(value: string): PlayGlobalMessage;
 
-    getMessage(): string;
-    setMessage(value: string): PlayGlobalMessage;
+    getContent(): string;
+    setContent(value: string): PlayGlobalMessage;
+
+    getBroadcasttoworld(): boolean;
+    setBroadcasttoworld(value: boolean): PlayGlobalMessage;
 
 
     serializeBinary(): Uint8Array;
@@ -620,9 +620,9 @@ export class PlayGlobalMessage extends jspb.Message {
 
 export namespace PlayGlobalMessage {
     export type AsObject = {
-        id: string,
         type: string,
-        message: string,
+        content: string,
+        broadcasttoworld: boolean,
     }
 }
 
@@ -1279,6 +1279,23 @@ export namespace WorldFullMessage {
     }
 }
 
+export class TokenExpiredMessage extends jspb.Message { 
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TokenExpiredMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: TokenExpiredMessage): TokenExpiredMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TokenExpiredMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TokenExpiredMessage;
+    static deserializeBinaryFromReader(message: TokenExpiredMessage, reader: jspb.BinaryReader): TokenExpiredMessage;
+}
+
+export namespace TokenExpiredMessage {
+    export type AsObject = {
+    }
+}
+
 export class WorldConnexionMessage extends jspb.Message { 
     getMessage(): string;
     setMessage(value: string): WorldConnexionMessage;
@@ -1441,6 +1458,12 @@ export class ServerToClientMessage extends jspb.Message {
     setEmoteeventmessage(value?: EmoteEventMessage): ServerToClientMessage;
 
 
+    hasTokenexpiredmessage(): boolean;
+    clearTokenexpiredmessage(): void;
+    getTokenexpiredmessage(): TokenExpiredMessage | undefined;
+    setTokenexpiredmessage(value?: TokenExpiredMessage): ServerToClientMessage;
+
+
     getMessageCase(): ServerToClientMessage.MessageCase;
 
     serializeBinary(): Uint8Array;
@@ -1474,6 +1497,7 @@ export namespace ServerToClientMessage {
         refreshroommessage?: RefreshRoomMessage.AsObject,
         worldconnexionmessage?: WorldConnexionMessage.AsObject,
         emoteeventmessage?: EmoteEventMessage.AsObject,
+        tokenexpiredmessage?: TokenExpiredMessage.AsObject,
     }
 
     export enum MessageCase {
@@ -1516,6 +1540,8 @@ export namespace ServerToClientMessage {
     WORLDCONNEXIONMESSAGE = 18,
 
     EMOTEEVENTMESSAGE = 19,
+
+    TOKENEXPIREDMESSAGE = 20,
 
     }
 
@@ -2345,6 +2371,9 @@ export class AdminRoomMessage extends jspb.Message {
     getRoomid(): string;
     setRoomid(value: string): AdminRoomMessage;
 
+    getType(): string;
+    setType(value: string): AdminRoomMessage;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): AdminRoomMessage.AsObject;
@@ -2360,6 +2389,7 @@ export namespace AdminRoomMessage {
     export type AsObject = {
         message: string,
         roomid: string,
+        type: string,
     }
 }
 
