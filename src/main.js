@@ -9,7 +9,7 @@ const url = `wss://${config.get('main.url')}/room`
   + `&${config.get('main.characterLayers')}`
   + `&x=${config.get('main.position.x')}`
   + `&y=${config.get('main.position.y')}`
-  + '&top=715&bottom=1088&left=0&right=1280' // Don't know what that's for... Is it the size of the listen room
+  + `&top=0&bottom=${config.get('main.size.height')}&left=0&right=${config.get('main.size.width')}` // Don't know what that's for... Is it the size of the listen room
 
 const slackURL = config.get('slack.url')
 
