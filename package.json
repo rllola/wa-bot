@@ -1,6 +1,6 @@
 {
   "name": "wa-bot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Workadventure Bot",
   "main": "main.js",
   "scripts": {
