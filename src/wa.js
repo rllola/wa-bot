@@ -13,13 +13,17 @@ class WA extends EventEmitter {
     this.ws.on('open', this.onOpened.bind(this))
     this.ws.on('message', this.onMessage.bind(this))
     this.ws.on('error', this.onError.bind(this))
+    this.ws.on('close', this.onClose.bind(this))
+
+  }
+
+  ping () {
+    this.ws.send('')
   }
 
   onOpened () {
     console.log('opened')
-    setInterval(() => {
-        this.ws.send('')
-    }, 20000)
+    setInterval(this.ping.bind(this), 20000)
   }
 
   onMessage (data) {
@@ -51,6 +55,11 @@ class WA extends EventEmitter {
 
   onError (err) {
     console.error(err)
+  }
+
+  onClose () {
+    console.log('disconnected')
+    clearInterval(this.ping().bind(this))
   }
 }
 
