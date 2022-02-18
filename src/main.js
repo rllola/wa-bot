@@ -11,6 +11,8 @@ const url = `wss://${config.get('main.url')}/room`
   + `&y=${config.get('main.position.y')}`
   + `&top=0&bottom=${config.get('main.size.height')}&left=0&right=${config.get('main.size.width')}` // Don't know what that's for... Is it the size of the listen room
 
+console.log(url)
+
 const slackURL = config.get('slack.url')
 
 function postMessage (text) {

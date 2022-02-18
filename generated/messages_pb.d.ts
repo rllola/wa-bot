@@ -190,13 +190,11 @@ export namespace PingMessage {
 }
 
 export class SetPlayerDetailsMessage extends jspb.Message { 
-    getName(): string;
-    setName(value: string): SetPlayerDetailsMessage;
+    getOutlinecolor(): number;
+    setOutlinecolor(value: number): SetPlayerDetailsMessage;
 
-    clearCharacterlayersList(): void;
-    getCharacterlayersList(): Array<string>;
-    setCharacterlayersList(value: Array<string>): SetPlayerDetailsMessage;
-    addCharacterlayers(value: string, index?: number): string;
+    getRemoveoutlinecolor(): boolean;
+    setRemoveoutlinecolor(value: boolean): SetPlayerDetailsMessage;
 
 
     serializeBinary(): Uint8Array;
@@ -211,8 +209,8 @@ export class SetPlayerDetailsMessage extends jspb.Message {
 
 export namespace SetPlayerDetailsMessage {
     export type AsObject = {
-        name: string,
-        characterlayersList: Array<string>,
+        outlinecolor: number,
+        removeoutlinecolor: boolean,
     }
 }
 
@@ -368,6 +366,77 @@ export namespace QueryJitsiJwtMessage {
     }
 }
 
+export class FollowRequestMessage extends jspb.Message { 
+    getLeader(): number;
+    setLeader(value: number): FollowRequestMessage;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FollowRequestMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: FollowRequestMessage): FollowRequestMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FollowRequestMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FollowRequestMessage;
+    static deserializeBinaryFromReader(message: FollowRequestMessage, reader: jspb.BinaryReader): FollowRequestMessage;
+}
+
+export namespace FollowRequestMessage {
+    export type AsObject = {
+        leader: number,
+    }
+}
+
+export class FollowConfirmationMessage extends jspb.Message { 
+    getLeader(): number;
+    setLeader(value: number): FollowConfirmationMessage;
+
+    getFollower(): number;
+    setFollower(value: number): FollowConfirmationMessage;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FollowConfirmationMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: FollowConfirmationMessage): FollowConfirmationMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FollowConfirmationMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FollowConfirmationMessage;
+    static deserializeBinaryFromReader(message: FollowConfirmationMessage, reader: jspb.BinaryReader): FollowConfirmationMessage;
+}
+
+export namespace FollowConfirmationMessage {
+    export type AsObject = {
+        leader: number,
+        follower: number,
+    }
+}
+
+export class FollowAbortMessage extends jspb.Message { 
+    getLeader(): number;
+    setLeader(value: number): FollowAbortMessage;
+
+    getFollower(): number;
+    setFollower(value: number): FollowAbortMessage;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FollowAbortMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: FollowAbortMessage): FollowAbortMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FollowAbortMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FollowAbortMessage;
+    static deserializeBinaryFromReader(message: FollowAbortMessage, reader: jspb.BinaryReader): FollowAbortMessage;
+}
+
+export namespace FollowAbortMessage {
+    export type AsObject = {
+        leader: number,
+        follower: number,
+    }
+}
+
 export class ClientToServerMessage extends jspb.Message { 
 
     hasUsermovesmessage(): boolean;
@@ -448,6 +517,24 @@ export class ClientToServerMessage extends jspb.Message {
     setVariablemessage(value?: VariableMessage): ClientToServerMessage;
 
 
+    hasFollowrequestmessage(): boolean;
+    clearFollowrequestmessage(): void;
+    getFollowrequestmessage(): FollowRequestMessage | undefined;
+    setFollowrequestmessage(value?: FollowRequestMessage): ClientToServerMessage;
+
+
+    hasFollowconfirmationmessage(): boolean;
+    clearFollowconfirmationmessage(): void;
+    getFollowconfirmationmessage(): FollowConfirmationMessage | undefined;
+    setFollowconfirmationmessage(value?: FollowConfirmationMessage): ClientToServerMessage;
+
+
+    hasFollowabortmessage(): boolean;
+    clearFollowabortmessage(): void;
+    getFollowabortmessage(): FollowAbortMessage | undefined;
+    setFollowabortmessage(value?: FollowAbortMessage): ClientToServerMessage;
+
+
     getMessageCase(): ClientToServerMessage.MessageCase;
 
     serializeBinary(): Uint8Array;
@@ -475,6 +562,9 @@ export namespace ClientToServerMessage {
         queryjitsijwtmessage?: QueryJitsiJwtMessage.AsObject,
         emotepromptmessage?: EmotePromptMessage.AsObject,
         variablemessage?: VariableMessage.AsObject,
+        followrequestmessage?: FollowRequestMessage.AsObject,
+        followconfirmationmessage?: FollowConfirmationMessage.AsObject,
+        followabortmessage?: FollowAbortMessage.AsObject,
     }
 
     export enum MessageCase {
@@ -505,6 +595,12 @@ export namespace ClientToServerMessage {
     EMOTEPROMPTMESSAGE = 13,
 
     VARIABLEMESSAGE = 14,
+
+    FOLLOWREQUESTMESSAGE = 15,
+
+    FOLLOWCONFIRMATIONMESSAGE = 16,
+
+    FOLLOWABORTMESSAGE = 17,
 
     }
 
@@ -731,6 +827,12 @@ export class SubMessage extends jspb.Message {
     setErrormessage(value?: ErrorMessage): SubMessage;
 
 
+    hasPlayerdetailsupdatedmessage(): boolean;
+    clearPlayerdetailsupdatedmessage(): void;
+    getPlayerdetailsupdatedmessage(): PlayerDetailsUpdatedMessage | undefined;
+    setPlayerdetailsupdatedmessage(value?: PlayerDetailsUpdatedMessage): SubMessage;
+
+
     getMessageCase(): SubMessage.MessageCase;
 
     serializeBinary(): Uint8Array;
@@ -754,6 +856,7 @@ export namespace SubMessage {
         emoteeventmessage?: EmoteEventMessage.AsObject,
         variablemessage?: VariableMessage.AsObject,
         errormessage?: ErrorMessage.AsObject,
+        playerdetailsupdatedmessage?: PlayerDetailsUpdatedMessage.AsObject,
     }
 
     export enum MessageCase {
@@ -776,6 +879,8 @@ export namespace SubMessage {
     VARIABLEMESSAGE = 8,
 
     ERRORMESSAGE = 9,
+
+    PLAYERDETAILSUPDATEDMESSAGE = 10,
 
     }
 
@@ -891,6 +996,12 @@ export class UserJoinedMessage extends jspb.Message {
     getUseruuid(): string;
     setUseruuid(value: string): UserJoinedMessage;
 
+    getOutlinecolor(): number;
+    setOutlinecolor(value: number): UserJoinedMessage;
+
+    getHasoutline(): boolean;
+    setHasoutline(value: boolean): UserJoinedMessage;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): UserJoinedMessage.AsObject;
@@ -911,6 +1022,8 @@ export namespace UserJoinedMessage {
         companion?: CompanionMessage.AsObject,
         visitcardurl: string,
         useruuid: string,
+        outlinecolor: number,
+        hasoutline: boolean,
     }
 }
 
@@ -1000,6 +1113,9 @@ export class RoomJoinedMessage extends jspb.Message {
     setVariableList(value: Array<VariableMessage>): RoomJoinedMessage;
     addVariable(value?: VariableMessage, index?: number): VariableMessage;
 
+    getUserroomtoken(): string;
+    setUserroomtoken(value: string): RoomJoinedMessage;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RoomJoinedMessage.AsObject;
@@ -1017,6 +1133,7 @@ export namespace RoomJoinedMessage {
         currentuserid: number,
         tagList: Array<string>,
         variableList: Array<VariableMessage.AsObject>,
+        userroomtoken: string,
     }
 }
 
@@ -1386,18 +1503,6 @@ export class ServerToClientMessage extends jspb.Message {
     setWebrtcdisconnectmessage(value?: WebRtcDisconnectMessage): ServerToClientMessage;
 
 
-    hasPlayglobalmessage(): boolean;
-    clearPlayglobalmessage(): void;
-    getPlayglobalmessage(): PlayGlobalMessage | undefined;
-    setPlayglobalmessage(value?: PlayGlobalMessage): ServerToClientMessage;
-
-
-    hasStopglobalmessage(): boolean;
-    clearStopglobalmessage(): void;
-    getStopglobalmessage(): StopGlobalMessage | undefined;
-    setStopglobalmessage(value?: StopGlobalMessage): ServerToClientMessage;
-
-
     hasTeleportmessagemessage(): boolean;
     clearTeleportmessagemessage(): void;
     getTeleportmessagemessage(): TeleportMessageMessage | undefined;
@@ -1420,12 +1525,6 @@ export class ServerToClientMessage extends jspb.Message {
     clearBanusermessage(): void;
     getBanusermessage(): BanUserMessage | undefined;
     setBanusermessage(value?: BanUserMessage): ServerToClientMessage;
-
-
-    hasAdminroommessage(): boolean;
-    clearAdminroommessage(): void;
-    getAdminroommessage(): AdminRoomMessage | undefined;
-    setAdminroommessage(value?: AdminRoomMessage): ServerToClientMessage;
 
 
     hasWorldfullwarningmessage(): boolean;
@@ -1452,16 +1551,28 @@ export class ServerToClientMessage extends jspb.Message {
     setWorldconnexionmessage(value?: WorldConnexionMessage): ServerToClientMessage;
 
 
-    hasEmoteeventmessage(): boolean;
-    clearEmoteeventmessage(): void;
-    getEmoteeventmessage(): EmoteEventMessage | undefined;
-    setEmoteeventmessage(value?: EmoteEventMessage): ServerToClientMessage;
-
-
     hasTokenexpiredmessage(): boolean;
     clearTokenexpiredmessage(): void;
     getTokenexpiredmessage(): TokenExpiredMessage | undefined;
     setTokenexpiredmessage(value?: TokenExpiredMessage): ServerToClientMessage;
+
+
+    hasFollowrequestmessage(): boolean;
+    clearFollowrequestmessage(): void;
+    getFollowrequestmessage(): FollowRequestMessage | undefined;
+    setFollowrequestmessage(value?: FollowRequestMessage): ServerToClientMessage;
+
+
+    hasFollowconfirmationmessage(): boolean;
+    clearFollowconfirmationmessage(): void;
+    getFollowconfirmationmessage(): FollowConfirmationMessage | undefined;
+    setFollowconfirmationmessage(value?: FollowConfirmationMessage): ServerToClientMessage;
+
+
+    hasFollowabortmessage(): boolean;
+    clearFollowabortmessage(): void;
+    getFollowabortmessage(): FollowAbortMessage | undefined;
+    setFollowabortmessage(value?: FollowAbortMessage): ServerToClientMessage;
 
 
     getMessageCase(): ServerToClientMessage.MessageCase;
@@ -1485,19 +1596,18 @@ export namespace ServerToClientMessage {
         webrtcsignaltoclientmessage?: WebRtcSignalToClientMessage.AsObject,
         webrtcscreensharingsignaltoclientmessage?: WebRtcSignalToClientMessage.AsObject,
         webrtcdisconnectmessage?: WebRtcDisconnectMessage.AsObject,
-        playglobalmessage?: PlayGlobalMessage.AsObject,
-        stopglobalmessage?: StopGlobalMessage.AsObject,
         teleportmessagemessage?: TeleportMessageMessage.AsObject,
         sendjitsijwtmessage?: SendJitsiJwtMessage.AsObject,
         sendusermessage?: SendUserMessage.AsObject,
         banusermessage?: BanUserMessage.AsObject,
-        adminroommessage?: AdminRoomMessage.AsObject,
         worldfullwarningmessage?: WorldFullWarningMessage.AsObject,
         worldfullmessage?: WorldFullMessage.AsObject,
         refreshroommessage?: RefreshRoomMessage.AsObject,
         worldconnexionmessage?: WorldConnexionMessage.AsObject,
-        emoteeventmessage?: EmoteEventMessage.AsObject,
         tokenexpiredmessage?: TokenExpiredMessage.AsObject,
+        followrequestmessage?: FollowRequestMessage.AsObject,
+        followconfirmationmessage?: FollowConfirmationMessage.AsObject,
+        followabortmessage?: FollowAbortMessage.AsObject,
     }
 
     export enum MessageCase {
@@ -1517,10 +1627,6 @@ export namespace ServerToClientMessage {
 
     WEBRTCDISCONNECTMESSAGE = 7,
 
-    PLAYGLOBALMESSAGE = 8,
-
-    STOPGLOBALMESSAGE = 9,
-
     TELEPORTMESSAGEMESSAGE = 10,
 
     SENDJITSIJWTMESSAGE = 11,
@@ -1528,8 +1634,6 @@ export namespace ServerToClientMessage {
     SENDUSERMESSAGE = 12,
 
     BANUSERMESSAGE = 13,
-
-    ADMINROOMMESSAGE = 14,
 
     WORLDFULLWARNINGMESSAGE = 15,
 
@@ -1539,9 +1643,13 @@ export namespace ServerToClientMessage {
 
     WORLDCONNEXIONMESSAGE = 18,
 
-    EMOTEEVENTMESSAGE = 19,
-
     TOKENEXPIREDMESSAGE = 20,
+
+    FOLLOWREQUESTMESSAGE = 21,
+
+    FOLLOWCONFIRMATIONMESSAGE = 22,
+
+    FOLLOWABORTMESSAGE = 23,
 
     }
 
@@ -1585,6 +1693,9 @@ export class JoinRoomMessage extends jspb.Message {
     getVisitcardurl(): string;
     setVisitcardurl(value: string): JoinRoomMessage;
 
+    getUserroomtoken(): string;
+    setUserroomtoken(value: string): JoinRoomMessage;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): JoinRoomMessage.AsObject;
@@ -1607,6 +1718,7 @@ export namespace JoinRoomMessage {
         ipaddress: string,
         companion?: CompanionMessage.AsObject,
         visitcardurl: string,
+        userroomtoken: string,
     }
 }
 
@@ -1646,6 +1758,12 @@ export class UserJoinedZoneMessage extends jspb.Message {
     getUseruuid(): string;
     setUseruuid(value: string): UserJoinedZoneMessage;
 
+    getOutlinecolor(): number;
+    setOutlinecolor(value: number): UserJoinedZoneMessage;
+
+    getHasoutline(): boolean;
+    setHasoutline(value: boolean): UserJoinedZoneMessage;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): UserJoinedZoneMessage.AsObject;
@@ -1667,6 +1785,8 @@ export namespace UserJoinedZoneMessage {
         companion?: CompanionMessage.AsObject,
         visitcardurl: string,
         useruuid: string,
+        outlinecolor: number,
+        hasoutline: boolean,
     }
 }
 
@@ -1762,6 +1882,34 @@ export namespace GroupLeftZoneMessage {
     export type AsObject = {
         groupid: number,
         tozone?: Zone.AsObject,
+    }
+}
+
+export class PlayerDetailsUpdatedMessage extends jspb.Message { 
+    getUserid(): number;
+    setUserid(value: number): PlayerDetailsUpdatedMessage;
+
+
+    hasDetails(): boolean;
+    clearDetails(): void;
+    getDetails(): SetPlayerDetailsMessage | undefined;
+    setDetails(value?: SetPlayerDetailsMessage): PlayerDetailsUpdatedMessage;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): PlayerDetailsUpdatedMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: PlayerDetailsUpdatedMessage): PlayerDetailsUpdatedMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: PlayerDetailsUpdatedMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): PlayerDetailsUpdatedMessage;
+    static deserializeBinaryFromReader(message: PlayerDetailsUpdatedMessage, reader: jspb.BinaryReader): PlayerDetailsUpdatedMessage;
+}
+
+export namespace PlayerDetailsUpdatedMessage {
+    export type AsObject = {
+        userid: number,
+        details?: SetPlayerDetailsMessage.AsObject,
     }
 }
 
@@ -1884,18 +2032,6 @@ export class PusherToBackMessage extends jspb.Message {
     setWebrtcscreensharingsignaltoservermessage(value?: WebRtcSignalToServerMessage): PusherToBackMessage;
 
 
-    hasPlayglobalmessage(): boolean;
-    clearPlayglobalmessage(): void;
-    getPlayglobalmessage(): PlayGlobalMessage | undefined;
-    setPlayglobalmessage(value?: PlayGlobalMessage): PusherToBackMessage;
-
-
-    hasStopglobalmessage(): boolean;
-    clearStopglobalmessage(): void;
-    getStopglobalmessage(): StopGlobalMessage | undefined;
-    setStopglobalmessage(value?: StopGlobalMessage): PusherToBackMessage;
-
-
     hasReportplayermessage(): boolean;
     clearReportplayermessage(): void;
     getReportplayermessage(): ReportPlayerMessage | undefined;
@@ -1932,6 +2068,24 @@ export class PusherToBackMessage extends jspb.Message {
     setVariablemessage(value?: VariableMessage): PusherToBackMessage;
 
 
+    hasFollowrequestmessage(): boolean;
+    clearFollowrequestmessage(): void;
+    getFollowrequestmessage(): FollowRequestMessage | undefined;
+    setFollowrequestmessage(value?: FollowRequestMessage): PusherToBackMessage;
+
+
+    hasFollowconfirmationmessage(): boolean;
+    clearFollowconfirmationmessage(): void;
+    getFollowconfirmationmessage(): FollowConfirmationMessage | undefined;
+    setFollowconfirmationmessage(value?: FollowConfirmationMessage): PusherToBackMessage;
+
+
+    hasFollowabortmessage(): boolean;
+    clearFollowabortmessage(): void;
+    getFollowabortmessage(): FollowAbortMessage | undefined;
+    setFollowabortmessage(value?: FollowAbortMessage): PusherToBackMessage;
+
+
     getMessageCase(): PusherToBackMessage.MessageCase;
 
     serializeBinary(): Uint8Array;
@@ -1953,14 +2107,15 @@ export namespace PusherToBackMessage {
         setplayerdetailsmessage?: SetPlayerDetailsMessage.AsObject,
         webrtcsignaltoservermessage?: WebRtcSignalToServerMessage.AsObject,
         webrtcscreensharingsignaltoservermessage?: WebRtcSignalToServerMessage.AsObject,
-        playglobalmessage?: PlayGlobalMessage.AsObject,
-        stopglobalmessage?: StopGlobalMessage.AsObject,
         reportplayermessage?: ReportPlayerMessage.AsObject,
         queryjitsijwtmessage?: QueryJitsiJwtMessage.AsObject,
         sendusermessage?: SendUserMessage.AsObject,
         banusermessage?: BanUserMessage.AsObject,
         emotepromptmessage?: EmotePromptMessage.AsObject,
         variablemessage?: VariableMessage.AsObject,
+        followrequestmessage?: FollowRequestMessage.AsObject,
+        followconfirmationmessage?: FollowConfirmationMessage.AsObject,
+        followabortmessage?: FollowAbortMessage.AsObject,
     }
 
     export enum MessageCase {
@@ -1980,10 +2135,6 @@ export namespace PusherToBackMessage {
 
     WEBRTCSCREENSHARINGSIGNALTOSERVERMESSAGE = 7,
 
-    PLAYGLOBALMESSAGE = 8,
-
-    STOPGLOBALMESSAGE = 9,
-
     REPORTPLAYERMESSAGE = 10,
 
     QUERYJITSIJWTMESSAGE = 11,
@@ -1995,6 +2146,12 @@ export namespace PusherToBackMessage {
     EMOTEPROMPTMESSAGE = 14,
 
     VARIABLEMESSAGE = 15,
+
+    FOLLOWREQUESTMESSAGE = 16,
+
+    FOLLOWCONFIRMATIONMESSAGE = 17,
+
+    FOLLOWABORTMESSAGE = 18,
 
     }
 
@@ -2085,6 +2242,12 @@ export class SubToPusherMessage extends jspb.Message {
     setErrormessage(value?: ErrorMessage): SubToPusherMessage;
 
 
+    hasPlayerdetailsupdatedmessage(): boolean;
+    clearPlayerdetailsupdatedmessage(): void;
+    getPlayerdetailsupdatedmessage(): PlayerDetailsUpdatedMessage | undefined;
+    setPlayerdetailsupdatedmessage(value?: PlayerDetailsUpdatedMessage): SubToPusherMessage;
+
+
     getMessageCase(): SubToPusherMessage.MessageCase;
 
     serializeBinary(): Uint8Array;
@@ -2109,6 +2272,7 @@ export namespace SubToPusherMessage {
         banusermessage?: BanUserMessage.AsObject,
         emoteeventmessage?: EmoteEventMessage.AsObject,
         errormessage?: ErrorMessage.AsObject,
+        playerdetailsupdatedmessage?: PlayerDetailsUpdatedMessage.AsObject,
     }
 
     export enum MessageCase {
@@ -2133,6 +2297,8 @@ export namespace SubToPusherMessage {
     EMOTEEVENTMESSAGE = 9,
 
     ERRORMESSAGE = 10,
+
+    PLAYERDETAILSUPDATEDMESSAGE = 11,
 
     }
 
