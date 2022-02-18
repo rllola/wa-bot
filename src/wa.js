@@ -59,7 +59,7 @@ class WA extends EventEmitter {
 
   onClose () {
     console.log('disconnected')
-    clearInterval(this.ping().bind(this))
+    clearInterval(this.ping.bind(this))
   }
 }
 
