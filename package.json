@@ -1,6 +1,6 @@
 {
   "name": "wa-bot",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Workadventure Bot",
   "main": "main.js",
   "scripts": {
@@ -13,8 +13,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "config": "^3.3.6",
-    "google-protobuf": "^3.17.3",
-    "grpc": "^1.24.11",
+    "google-protobuf": "^3.21.0",
+    "@grpc/grpc-js": "^1.7.1",
     "toml": "^3.0.0",
     "ws": "^7.5.3"
   },
