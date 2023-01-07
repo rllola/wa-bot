@@ -11,11 +11,11 @@ Under the `config/` folder create a `default.toml` (for development) file and a 
 example.toml
 ```
 [main]
-url = "pusher.<workadventure-url>"
+url = "<workadventure-url>"
 token = "<workadventure-token>"
 name = "Pixel"
 roomId = "<workadevture-roomId>"
-characterLayers = "characterLayers=color_13&characterLayers=eyes_22&characterLayers=hair_1&characterLayers=clothes_10&characterLayers=hats_1&characterLayers=accessory_1"
+characterLayers = "characterLayers=body13&characterLayers=eyes1&characterLayers=hair1&characterLayers=clothes10&characterLayers=hat1&characterLayers=accessory1"
 
 [main.position]
 x = 1200
