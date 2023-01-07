@@ -1,6 +1,6 @@
 const WebSocket = require('ws')
 const EventEmitter = require('events')
-const { RoomManagerClient } = require('../generated/messages_grpc_pb')
+const { RoomManagerClient } = require('../generated/services_grpc_pb')
 
 class WA extends EventEmitter {
 
@@ -28,7 +28,7 @@ class WA extends EventEmitter {
 
   onMessage (data) {
     let response = RoomManagerClient.service.joinRoom.responseDeserialize(data)
-        
+
     if (response.getMessageCase() === 1) {
       let m = response.getBatchmessage()
       let payloadList = m.getPayloadList()
