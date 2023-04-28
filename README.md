@@ -16,6 +16,8 @@ token = "<workadventure-token>"
 name = "Pixel"
 roomId = "<workadevture-roomId>"
 characterLayers = "characterLayers=body13&characterLayers=eyes1&characterLayers=hair1&characterLayers=clothes10&characterLayers=hat1&characterLayers=accessory1"
+# This version will change with the version of you wa. This one match v1.15.10
+version = "68f5ebf1"
 
 [main.position]
 x = 1200
