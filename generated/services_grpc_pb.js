@@ -114,6 +114,17 @@ function deserialize_EditMapCommandWithKeyMessage(buffer_arg) {
   return messages_pb.EditMapCommandWithKeyMessage.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_EditMapCommandsArrayMessage(arg) {
+  if (!(arg instanceof messages_pb.EditMapCommandsArrayMessage)) {
+    throw new Error('Expected argument of type EditMapCommandsArrayMessage');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_EditMapCommandsArrayMessage(buffer_arg) {
+  return messages_pb.EditMapCommandsArrayMessage.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_EmptyMessage(arg) {
   if (!(arg instanceof messages_pb.EmptyMessage)) {
     throw new Error('Expected argument of type EmptyMessage');
@@ -123,6 +134,28 @@ function serialize_EmptyMessage(arg) {
 
 function deserialize_EmptyMessage(buffer_arg) {
   return messages_pb.EmptyMessage.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_MapStorageToBackMessage(arg) {
+  if (!(arg instanceof messages_pb.MapStorageToBackMessage)) {
+    throw new Error('Expected argument of type MapStorageToBackMessage');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_MapStorageToBackMessage(buffer_arg) {
+  return messages_pb.MapStorageToBackMessage.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_MapStorageUrlMessage(arg) {
+  if (!(arg instanceof messages_pb.MapStorageUrlMessage)) {
+    throw new Error('Expected argument of type MapStorageUrlMessage');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_MapStorageUrlMessage(buffer_arg) {
+  return messages_pb.MapStorageUrlMessage.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_PingMessage(arg) {
@@ -200,6 +233,17 @@ function serialize_ServerToClientMessage(arg) {
 
 function deserialize_ServerToClientMessage(buffer_arg) {
   return messages_pb.ServerToClientMessage.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_UpdateMapToNewestWithKeyMessage(arg) {
+  if (!(arg instanceof messages_pb.UpdateMapToNewestWithKeyMessage)) {
+    throw new Error('Expected argument of type UpdateMapToNewestWithKeyMessage');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_UpdateMapToNewestWithKeyMessage(buffer_arg) {
+  return messages_pb.UpdateMapToNewestWithKeyMessage.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_WorldFullWarningToRoomMessage(arg) {
@@ -401,6 +445,28 @@ var MapStorageService = exports.MapStorageService = {
     requestDeserialize: deserialize_EditMapCommandWithKeyMessage,
     responseSerialize: serialize_EditMapCommandMessage,
     responseDeserialize: deserialize_EditMapCommandMessage,
+  },
+  handleUpdateMapToNewestMessage: {
+    path: '/MapStorage/handleUpdateMapToNewestMessage',
+    requestStream: false,
+    responseStream: false,
+    requestType: messages_pb.UpdateMapToNewestWithKeyMessage,
+    responseType: messages_pb.EditMapCommandsArrayMessage,
+    requestSerialize: serialize_UpdateMapToNewestWithKeyMessage,
+    requestDeserialize: deserialize_UpdateMapToNewestWithKeyMessage,
+    responseSerialize: serialize_EditMapCommandsArrayMessage,
+    responseDeserialize: deserialize_EditMapCommandsArrayMessage,
+  },
+  listenToMessages: {
+    path: '/MapStorage/listenToMessages',
+    requestStream: false,
+    responseStream: true,
+    requestType: messages_pb.MapStorageUrlMessage,
+    responseType: messages_pb.MapStorageToBackMessage,
+    requestSerialize: serialize_MapStorageUrlMessage,
+    requestDeserialize: deserialize_MapStorageUrlMessage,
+    responseSerialize: serialize_MapStorageToBackMessage,
+    responseDeserialize: deserialize_MapStorageToBackMessage,
   },
 };
 

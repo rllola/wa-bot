@@ -242,6 +242,8 @@ export class RoomManagerClient extends grpc.Client implements IRoomManagerClient
 interface IMapStorageService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     ping: IMapStorageService_Iping;
     handleEditMapCommandWithKeyMessage: IMapStorageService_IhandleEditMapCommandWithKeyMessage;
+    handleUpdateMapToNewestMessage: IMapStorageService_IhandleUpdateMapToNewestMessage;
+    listenToMessages: IMapStorageService_IlistenToMessages;
 }
 
 interface IMapStorageService_Iping extends grpc.MethodDefinition<messages_pb.PingMessage, messages_pb.PingMessage> {
@@ -262,12 +264,32 @@ interface IMapStorageService_IhandleEditMapCommandWithKeyMessage extends grpc.Me
     responseSerialize: grpc.serialize<messages_pb.EditMapCommandMessage>;
     responseDeserialize: grpc.deserialize<messages_pb.EditMapCommandMessage>;
 }
+interface IMapStorageService_IhandleUpdateMapToNewestMessage extends grpc.MethodDefinition<messages_pb.UpdateMapToNewestWithKeyMessage, messages_pb.EditMapCommandsArrayMessage> {
+    path: "/MapStorage/handleUpdateMapToNewestMessage";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<messages_pb.UpdateMapToNewestWithKeyMessage>;
+    requestDeserialize: grpc.deserialize<messages_pb.UpdateMapToNewestWithKeyMessage>;
+    responseSerialize: grpc.serialize<messages_pb.EditMapCommandsArrayMessage>;
+    responseDeserialize: grpc.deserialize<messages_pb.EditMapCommandsArrayMessage>;
+}
+interface IMapStorageService_IlistenToMessages extends grpc.MethodDefinition<messages_pb.MapStorageUrlMessage, messages_pb.MapStorageToBackMessage> {
+    path: "/MapStorage/listenToMessages";
+    requestStream: false;
+    responseStream: true;
+    requestSerialize: grpc.serialize<messages_pb.MapStorageUrlMessage>;
+    requestDeserialize: grpc.deserialize<messages_pb.MapStorageUrlMessage>;
+    responseSerialize: grpc.serialize<messages_pb.MapStorageToBackMessage>;
+    responseDeserialize: grpc.deserialize<messages_pb.MapStorageToBackMessage>;
+}
 
 export const MapStorageService: IMapStorageService;
 
 export interface IMapStorageServer extends grpc.UntypedServiceImplementation {
     ping: grpc.handleUnaryCall<messages_pb.PingMessage, messages_pb.PingMessage>;
     handleEditMapCommandWithKeyMessage: grpc.handleUnaryCall<messages_pb.EditMapCommandWithKeyMessage, messages_pb.EditMapCommandMessage>;
+    handleUpdateMapToNewestMessage: grpc.handleUnaryCall<messages_pb.UpdateMapToNewestWithKeyMessage, messages_pb.EditMapCommandsArrayMessage>;
+    listenToMessages: grpc.handleServerStreamingCall<messages_pb.MapStorageUrlMessage, messages_pb.MapStorageToBackMessage>;
 }
 
 export interface IMapStorageClient {
@@ -277,6 +299,11 @@ export interface IMapStorageClient {
     handleEditMapCommandWithKeyMessage(request: messages_pb.EditMapCommandWithKeyMessage, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandMessage) => void): grpc.ClientUnaryCall;
     handleEditMapCommandWithKeyMessage(request: messages_pb.EditMapCommandWithKeyMessage, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandMessage) => void): grpc.ClientUnaryCall;
     handleEditMapCommandWithKeyMessage(request: messages_pb.EditMapCommandWithKeyMessage, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandMessage) => void): grpc.ClientUnaryCall;
+    handleUpdateMapToNewestMessage(request: messages_pb.UpdateMapToNewestWithKeyMessage, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandsArrayMessage) => void): grpc.ClientUnaryCall;
+    handleUpdateMapToNewestMessage(request: messages_pb.UpdateMapToNewestWithKeyMessage, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandsArrayMessage) => void): grpc.ClientUnaryCall;
+    handleUpdateMapToNewestMessage(request: messages_pb.UpdateMapToNewestWithKeyMessage, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandsArrayMessage) => void): grpc.ClientUnaryCall;
+    listenToMessages(request: messages_pb.MapStorageUrlMessage, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<messages_pb.MapStorageToBackMessage>;
+    listenToMessages(request: messages_pb.MapStorageUrlMessage, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<messages_pb.MapStorageToBackMessage>;
 }
 
 export class MapStorageClient extends grpc.Client implements IMapStorageClient {
@@ -287,4 +314,9 @@ export class MapStorageClient extends grpc.Client implements IMapStorageClient {
     public handleEditMapCommandWithKeyMessage(request: messages_pb.EditMapCommandWithKeyMessage, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandMessage) => void): grpc.ClientUnaryCall;
     public handleEditMapCommandWithKeyMessage(request: messages_pb.EditMapCommandWithKeyMessage, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandMessage) => void): grpc.ClientUnaryCall;
     public handleEditMapCommandWithKeyMessage(request: messages_pb.EditMapCommandWithKeyMessage, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandMessage) => void): grpc.ClientUnaryCall;
+    public handleUpdateMapToNewestMessage(request: messages_pb.UpdateMapToNewestWithKeyMessage, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandsArrayMessage) => void): grpc.ClientUnaryCall;
+    public handleUpdateMapToNewestMessage(request: messages_pb.UpdateMapToNewestWithKeyMessage, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandsArrayMessage) => void): grpc.ClientUnaryCall;
+    public handleUpdateMapToNewestMessage(request: messages_pb.UpdateMapToNewestWithKeyMessage, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: messages_pb.EditMapCommandsArrayMessage) => void): grpc.ClientUnaryCall;
+    public listenToMessages(request: messages_pb.MapStorageUrlMessage, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<messages_pb.MapStorageToBackMessage>;
+    public listenToMessages(request: messages_pb.MapStorageUrlMessage, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<messages_pb.MapStorageToBackMessage>;
 }
