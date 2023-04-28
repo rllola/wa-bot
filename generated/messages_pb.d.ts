@@ -183,6 +183,52 @@ export namespace PingMessage {
     }
 }
 
+export class UpdateMapToNewestMessage extends jspb.Message { 
+    getCommandid(): string;
+    setCommandid(value: string): UpdateMapToNewestMessage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateMapToNewestMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateMapToNewestMessage): UpdateMapToNewestMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateMapToNewestMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateMapToNewestMessage;
+    static deserializeBinaryFromReader(message: UpdateMapToNewestMessage, reader: jspb.BinaryReader): UpdateMapToNewestMessage;
+}
+
+export namespace UpdateMapToNewestMessage {
+    export type AsObject = {
+        commandid: string,
+    }
+}
+
+export class UpdateMapToNewestWithKeyMessage extends jspb.Message { 
+    getMapkey(): string;
+    setMapkey(value: string): UpdateMapToNewestWithKeyMessage;
+
+    hasUpdatemaptonewestmessage(): boolean;
+    clearUpdatemaptonewestmessage(): void;
+    getUpdatemaptonewestmessage(): UpdateMapToNewestMessage | undefined;
+    setUpdatemaptonewestmessage(value?: UpdateMapToNewestMessage): UpdateMapToNewestWithKeyMessage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateMapToNewestWithKeyMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateMapToNewestWithKeyMessage): UpdateMapToNewestWithKeyMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateMapToNewestWithKeyMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateMapToNewestWithKeyMessage;
+    static deserializeBinaryFromReader(message: UpdateMapToNewestWithKeyMessage, reader: jspb.BinaryReader): UpdateMapToNewestWithKeyMessage;
+}
+
+export namespace UpdateMapToNewestWithKeyMessage {
+    export type AsObject = {
+        mapkey: string,
+        updatemaptonewestmessage?: UpdateMapToNewestMessage.AsObject,
+    }
+}
+
 export class SetPlayerDetailsMessage extends jspb.Message { 
 
     hasOutlinecolor(): boolean;
@@ -448,6 +494,21 @@ export class EditMapMessage extends jspb.Message {
     getDeleteareamessage(): DeleteAreaMessage | undefined;
     setDeleteareamessage(value?: DeleteAreaMessage): EditMapMessage;
 
+    hasModifyentitymessage(): boolean;
+    clearModifyentitymessage(): void;
+    getModifyentitymessage(): ModifyEntityMessage | undefined;
+    setModifyentitymessage(value?: ModifyEntityMessage): EditMapMessage;
+
+    hasCreateentitymessage(): boolean;
+    clearCreateentitymessage(): void;
+    getCreateentitymessage(): CreateEntityMessage | undefined;
+    setCreateentitymessage(value?: CreateEntityMessage): EditMapMessage;
+
+    hasDeleteentitymessage(): boolean;
+    clearDeleteentitymessage(): void;
+    getDeleteentitymessage(): DeleteEntityMessage | undefined;
+    setDeleteentitymessage(value?: DeleteEntityMessage): EditMapMessage;
+
     getMessageCase(): EditMapMessage.MessageCase;
 
     serializeBinary(): Uint8Array;
@@ -465,6 +526,9 @@ export namespace EditMapMessage {
         modifyareamessage?: ModifyAreaMessage.AsObject,
         createareamessage?: CreateAreaMessage.AsObject,
         deleteareamessage?: DeleteAreaMessage.AsObject,
+        modifyentitymessage?: ModifyEntityMessage.AsObject,
+        createentitymessage?: CreateEntityMessage.AsObject,
+        deleteentitymessage?: DeleteEntityMessage.AsObject,
     }
 
     export enum MessageCase {
@@ -472,6 +536,9 @@ export namespace EditMapMessage {
         MODIFYAREAMESSAGE = 1,
         CREATEAREAMESSAGE = 2,
         DELETEAREAMESSAGE = 3,
+        MODIFYENTITYMESSAGE = 4,
+        CREATEENTITYMESSAGE = 5,
+        DELETEENTITYMESSAGE = 6,
     }
 
 }
@@ -499,6 +566,28 @@ export namespace EditMapCommandMessage {
     export type AsObject = {
         id: string,
         editmapmessage?: EditMapMessage.AsObject,
+    }
+}
+
+export class EditMapCommandsArrayMessage extends jspb.Message { 
+    clearEditmapcommandsList(): void;
+    getEditmapcommandsList(): Array<EditMapCommandMessage>;
+    setEditmapcommandsList(value: Array<EditMapCommandMessage>): EditMapCommandsArrayMessage;
+    addEditmapcommands(value?: EditMapCommandMessage, index?: number): EditMapCommandMessage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): EditMapCommandsArrayMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: EditMapCommandsArrayMessage): EditMapCommandsArrayMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: EditMapCommandsArrayMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): EditMapCommandsArrayMessage;
+    static deserializeBinaryFromReader(message: EditMapCommandsArrayMessage, reader: jspb.BinaryReader): EditMapCommandsArrayMessage;
+}
+
+export namespace EditMapCommandsArrayMessage {
+    export type AsObject = {
+        editmapcommandsList: Array<EditMapCommandMessage.AsObject>,
     }
 }
 
@@ -721,6 +810,95 @@ export namespace CreateAreaMessage {
         width: number,
         height: number,
         name: string,
+    }
+}
+
+export class CreateEntityMessage extends jspb.Message { 
+    getId(): string;
+    setId(value: string): CreateEntityMessage;
+    getX(): number;
+    setX(value: number): CreateEntityMessage;
+    getY(): number;
+    setY(value: number): CreateEntityMessage;
+    getCollectionname(): string;
+    setCollectionname(value: string): CreateEntityMessage;
+    getPrefabid(): string;
+    setPrefabid(value: string): CreateEntityMessage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateEntityMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateEntityMessage): CreateEntityMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateEntityMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateEntityMessage;
+    static deserializeBinaryFromReader(message: CreateEntityMessage, reader: jspb.BinaryReader): CreateEntityMessage;
+}
+
+export namespace CreateEntityMessage {
+    export type AsObject = {
+        id: string,
+        x: number,
+        y: number,
+        collectionname: string,
+        prefabid: string,
+    }
+}
+
+export class DeleteEntityMessage extends jspb.Message { 
+    getId(): string;
+    setId(value: string): DeleteEntityMessage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteEntityMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteEntityMessage): DeleteEntityMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteEntityMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteEntityMessage;
+    static deserializeBinaryFromReader(message: DeleteEntityMessage, reader: jspb.BinaryReader): DeleteEntityMessage;
+}
+
+export namespace DeleteEntityMessage {
+    export type AsObject = {
+        id: string,
+    }
+}
+
+export class ModifyEntityMessage extends jspb.Message { 
+    getId(): string;
+    setId(value: string): ModifyEntityMessage;
+
+    hasX(): boolean;
+    clearX(): void;
+    getX(): number | undefined;
+    setX(value: number): ModifyEntityMessage;
+
+    hasY(): boolean;
+    clearY(): void;
+    getY(): number | undefined;
+    setY(value: number): ModifyEntityMessage;
+
+    getPropertiesMap(): jspb.Map<string, google_protobuf_struct_pb.Value>;
+    clearPropertiesMap(): void;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ModifyEntityMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: ModifyEntityMessage): ModifyEntityMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ModifyEntityMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ModifyEntityMessage;
+    static deserializeBinaryFromReader(message: ModifyEntityMessage, reader: jspb.BinaryReader): ModifyEntityMessage;
+}
+
+export namespace ModifyEntityMessage {
+    export type AsObject = {
+        id: string,
+        x?: number,
+        y?: number,
+
+        propertiesMap: Array<[string, google_protobuf_struct_pb.Value.AsObject]>,
     }
 }
 
@@ -1743,6 +1921,17 @@ export class RoomJoinedMessage extends jspb.Message {
     getUserjid(): string;
     setUserjid(value: string): RoomJoinedMessage;
 
+    hasEditmapcommandsarraymessage(): boolean;
+    clearEditmapcommandsarraymessage(): void;
+    getEditmapcommandsarraymessage(): EditMapCommandsArrayMessage | undefined;
+    setEditmapcommandsarraymessage(value?: EditMapCommandsArrayMessage): RoomJoinedMessage;
+    getWebrtcusername(): string;
+    setWebrtcusername(value: string): RoomJoinedMessage;
+    getWebrtcpassword(): string;
+    setWebrtcpassword(value: string): RoomJoinedMessage;
+    getCanedit(): boolean;
+    setCanedit(value: boolean): RoomJoinedMessage;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RoomJoinedMessage.AsObject;
     static toObject(includeInstance: boolean, msg: RoomJoinedMessage): RoomJoinedMessage.AsObject;
@@ -1765,6 +1954,10 @@ export namespace RoomJoinedMessage {
         playervariableList: Array<VariableMessage.AsObject>,
         applicationsList: Array<ApplicationMessage.AsObject>,
         userjid: string,
+        editmapcommandsarraymessage?: EditMapCommandsArrayMessage.AsObject,
+        webrtcusername: string,
+        webrtcpassword: string,
+        canedit: boolean,
     }
 }
 
@@ -1952,6 +2145,16 @@ export class RefreshRoomMessage extends jspb.Message {
     getVersionnumber(): number;
     setVersionnumber(value: number): RefreshRoomMessage;
 
+    hasComment(): boolean;
+    clearComment(): void;
+    getComment(): string | undefined;
+    setComment(value: string): RefreshRoomMessage;
+
+    hasTimetorefresh(): boolean;
+    clearTimetorefresh(): void;
+    getTimetorefresh(): number | undefined;
+    setTimetorefresh(value: number): RefreshRoomMessage;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RefreshRoomMessage.AsObject;
     static toObject(includeInstance: boolean, msg: RefreshRoomMessage): RefreshRoomMessage.AsObject;
@@ -1966,6 +2169,8 @@ export namespace RefreshRoomMessage {
     export type AsObject = {
         roomid: string,
         versionnumber: number,
+        comment?: string,
+        timetorefresh?: number,
     }
 }
 
@@ -2321,6 +2526,10 @@ export class JoinRoomMessage extends jspb.Message {
     addApplications(value?: ApplicationMessage, index?: number): ApplicationMessage;
     getUserjid(): string;
     setUserjid(value: string): JoinRoomMessage;
+    getLastcommandid(): string;
+    setLastcommandid(value: string): JoinRoomMessage;
+    getCanedit(): boolean;
+    setCanedit(value: boolean): JoinRoomMessage;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): JoinRoomMessage.AsObject;
@@ -2349,6 +2558,8 @@ export namespace JoinRoomMessage {
         islogged: boolean,
         applicationsList: Array<ApplicationMessage.AsObject>,
         userjid: string,
+        lastcommandid: string,
+        canedit: boolean,
     }
 }
 
@@ -2693,10 +2904,15 @@ export class PusherToBackMessage extends jspb.Message {
     getAskpositionmessage(): AskPositionMessage | undefined;
     setAskpositionmessage(value?: AskPositionMessage): PusherToBackMessage;
 
-    hasEditmapcommandwithkeymessage(): boolean;
-    clearEditmapcommandwithkeymessage(): void;
-    getEditmapcommandwithkeymessage(): EditMapCommandWithKeyMessage | undefined;
-    setEditmapcommandwithkeymessage(value?: EditMapCommandWithKeyMessage): PusherToBackMessage;
+    hasEditmapcommandmessage(): boolean;
+    clearEditmapcommandmessage(): void;
+    getEditmapcommandmessage(): EditMapCommandMessage | undefined;
+    setEditmapcommandmessage(value?: EditMapCommandMessage): PusherToBackMessage;
+
+    hasPingmessage(): boolean;
+    clearPingmessage(): void;
+    getPingmessage(): PingMessage | undefined;
+    setPingmessage(value?: PingMessage): PusherToBackMessage;
 
     getMessageCase(): PusherToBackMessage.MessageCase;
 
@@ -2729,7 +2945,8 @@ export namespace PusherToBackMessage {
         lockgrouppromptmessage?: LockGroupPromptMessage.AsObject,
         querymessage?: QueryMessage.AsObject,
         askpositionmessage?: AskPositionMessage.AsObject,
-        editmapcommandwithkeymessage?: EditMapCommandWithKeyMessage.AsObject,
+        editmapcommandmessage?: EditMapCommandMessage.AsObject,
+        pingmessage?: PingMessage.AsObject,
     }
 
     export enum MessageCase {
@@ -2751,7 +2968,8 @@ export namespace PusherToBackMessage {
         LOCKGROUPPROMPTMESSAGE = 19,
         QUERYMESSAGE = 21,
         ASKPOSITIONMESSAGE = 22,
-        EDITMAPCOMMANDWITHKEYMESSAGE = 23,
+        EDITMAPCOMMANDMESSAGE = 23,
+        PINGMESSAGE = 24,
     }
 
 }
@@ -2835,6 +3053,11 @@ export class SubToPusherMessage extends jspb.Message {
     getPlayerdetailsupdatedmessage(): PlayerDetailsUpdatedMessage | undefined;
     setPlayerdetailsupdatedmessage(value?: PlayerDetailsUpdatedMessage): SubToPusherMessage;
 
+    hasEditmapcommandmessage(): boolean;
+    clearEditmapcommandmessage(): void;
+    getEditmapcommandmessage(): EditMapCommandMessage | undefined;
+    setEditmapcommandmessage(value?: EditMapCommandMessage): SubToPusherMessage;
+
     getMessageCase(): SubToPusherMessage.MessageCase;
 
     serializeBinary(): Uint8Array;
@@ -2860,6 +3083,7 @@ export namespace SubToPusherMessage {
         emoteeventmessage?: EmoteEventMessage.AsObject,
         errormessage?: ErrorMessage.AsObject,
         playerdetailsupdatedmessage?: PlayerDetailsUpdatedMessage.AsObject,
+        editmapcommandmessage?: EditMapCommandMessage.AsObject,
     }
 
     export enum MessageCase {
@@ -2875,6 +3099,7 @@ export namespace SubToPusherMessage {
         EMOTEEVENTMESSAGE = 9,
         ERRORMESSAGE = 10,
         PLAYERDETAILSUPDATEDMESSAGE = 11,
+        EDITMAPCOMMANDMESSAGE = 12,
     }
 
 }
@@ -3080,6 +3305,77 @@ export namespace AdminPusherToBackMessage {
         SUBSCRIBETOROOM = 1,
     }
 
+}
+
+export class MapStorageToBackMessage extends jspb.Message { 
+
+    hasMapstoragerefreshmessage(): boolean;
+    clearMapstoragerefreshmessage(): void;
+    getMapstoragerefreshmessage(): MapStorageRefreshMessage | undefined;
+    setMapstoragerefreshmessage(value?: MapStorageRefreshMessage): MapStorageToBackMessage;
+
+    getMessageCase(): MapStorageToBackMessage.MessageCase;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): MapStorageToBackMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: MapStorageToBackMessage): MapStorageToBackMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: MapStorageToBackMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): MapStorageToBackMessage;
+    static deserializeBinaryFromReader(message: MapStorageToBackMessage, reader: jspb.BinaryReader): MapStorageToBackMessage;
+}
+
+export namespace MapStorageToBackMessage {
+    export type AsObject = {
+        mapstoragerefreshmessage?: MapStorageRefreshMessage.AsObject,
+    }
+
+    export enum MessageCase {
+        MESSAGE_NOT_SET = 0,
+        MAPSTORAGEREFRESHMESSAGE = 1,
+    }
+
+}
+
+export class MapStorageRefreshMessage extends jspb.Message { 
+    getComment(): string;
+    setComment(value: string): MapStorageRefreshMessage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): MapStorageRefreshMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: MapStorageRefreshMessage): MapStorageRefreshMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: MapStorageRefreshMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): MapStorageRefreshMessage;
+    static deserializeBinaryFromReader(message: MapStorageRefreshMessage, reader: jspb.BinaryReader): MapStorageRefreshMessage;
+}
+
+export namespace MapStorageRefreshMessage {
+    export type AsObject = {
+        comment: string,
+    }
+}
+
+export class MapStorageUrlMessage extends jspb.Message { 
+    getMapurl(): string;
+    setMapurl(value: string): MapStorageUrlMessage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): MapStorageUrlMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: MapStorageUrlMessage): MapStorageUrlMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: MapStorageUrlMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): MapStorageUrlMessage;
+    static deserializeBinaryFromReader(message: MapStorageUrlMessage, reader: jspb.BinaryReader): MapStorageUrlMessage;
+}
+
+export namespace MapStorageUrlMessage {
+    export type AsObject = {
+        mapurl: string,
+    }
 }
 
 export class AdminMessage extends jspb.Message { 
